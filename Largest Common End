@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace P01.Largest_Common_End
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] firstArr = Console.ReadLine()
+                .Split(new char[] { ' ' }, StringSplitOptions
+                .RemoveEmptyEntries)
+                .ToArray();
+            string[] secondArr = Console.ReadLine()
+                .Split(new char[] { ' ' }, StringSplitOptions
+                .RemoveEmptyEntries)
+                .ToArray();
+
+            int fArr = firstArr.Length;
+            int sArr = secondArr.Length;
+
+            int counter = 0;
+
+            if (fArr <= sArr)
+            {
+                for (int i = 0; i < fArr; i++)
+                {
+                    if (firstArr[i] == secondArr[i])
+                    {
+                        counter++;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < sArr; i++)
+                {
+                    if (firstArr[i] == secondArr[i])
+                    {
+                        counter++;
+                    }
+                }
+            }
+
+            if (counter == 0)
+            {
+                Array.Reverse(firstArr);
+                Array.Reverse(secondArr);
+                
+                if (fArr <= sArr)
+                {
+                    for (int i = 0; i < fArr; i++)
+                    {
+                        if (firstArr[i] == secondArr[i])
+                        {
+                            counter++;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < sArr; i++)
+                    {
+                        if (firstArr[i] == secondArr[i])
+                        {
+                            counter++;
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine(counter);
+        }
+    }
+}
