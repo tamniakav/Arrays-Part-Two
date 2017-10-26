@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace P02.Rotate_and_Sum
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            int n = int.Parse(Console.ReadLine());
+
+            int[] sumArr = new int[input.Length];
+
+            for (int i = 1; i <= n; i++)
+            {
+                int lastDigit = input.Last();
+                
+
+                for (int j = 0; j < input.Length - 1; j++)
+                {
+                    input[input.Length - j - 1] = input[input.Length - j - 2];
+                    //sumArr[i] = sumArr[i] + input[i];
+                }
+
+                input[0] = lastDigit;
+
+                for (int k = 0; k < sumArr.Length; k++)
+                {
+                    sumArr[k] = sumArr[k] + input[k];
+                }
+            }
+
+            Console.WriteLine(string.Join(" ", sumArr));
+        }
+    }
+}
