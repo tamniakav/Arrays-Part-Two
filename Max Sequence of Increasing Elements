@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace P06.Max_Sequence_of_Equal_Elements
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split(new char[] { ' ' }).Select(int.Parse).ToArray();
+
+            int startNum = 0;
+            int realNum = 0;
+            int count = 1;
+            int realCount = 0;
+            int bestInd = 0;
+            for (int i = 1; i < input.Length; i++)
+            {
+                if (input[i] > input[i - 1])
+                {
+                    startNum = input[i];
+                    count++;
+                    if (count > realCount)
+                    {
+                        realCount = count;
+                        realNum = i;
+                        bestInd = i - count + 1;
+                    }
+                }
+                else
+                {
+                    count = 1;
+                }
+            }
+
+            for (int i = bestInd; i < realCount + bestInd; i++)
+            {
+
+                Console.Write(input[i] + " ");
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
